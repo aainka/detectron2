@@ -1,0 +1,32 @@
+PATH:
+  Train_path : "/content/R_103/Images"
+  Val_path : "/content/R_103/Images" 
+  Pretrained_Weight_path : "/content/R_103/Weights/model_final.pth"
+  Output_dir : "/content/R_103/Output/2022_04_03_test"
+
+DATALOADER:
+  num_workers: 2
+
+TRAIN:
+  MODEL : "MaskRCNN_R50"   #1. MaskRCNN_R50 2.CascadeRCNN_X152
+  Class : Dig,Dust,Handprint,Scratch
+  IMS_PER_BATCH: 2
+  BASE_LR: 0.005
+  WARMUP_ITER: 100
+  MAX_ITER: 100
+  NMS_THRESH_TEST: 0.2
+  CHECKPOINT_PERIOD : 300
+  BACKBONE_FREEZE_AT : 0
+
+Val:
+  eval : False
+
+AUGMENTATION:
+  RandomFlip_V : False
+  RandomFlip_H : False
+  RandomContrast : False
+  RandomBrightness : False
+  RandomSaturation : False
+  RandomLighting : False
+  Sharpness : False
+  CopyPaste : False
